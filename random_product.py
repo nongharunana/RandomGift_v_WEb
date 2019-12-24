@@ -2,15 +2,15 @@ from random import randint
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
-product=open('products.csv').read().splitlines()
+product=open('sort.csv.csv').read().splitlines()
 table=[i.split(',') for i in product]
 
 app = Flask(__name__)
 # Enable CORS
 CORS(app)
 def get_index(min_p,max_p):
-    i_min = min([i for i in range(len(product)) if float(table[i][1])>=min_p])
-    i_max = max([j for j in range(len(product)) if float(table[j][1])<=max_p])
+    i_min = min([i for i in range(1,len(product)) if float(table[i][1])>=min_p])
+    i_max = max([j for j in range(1,len(product)) if float(table[j][1])<=max_p])
     return i_min,i_max
 
 def get_product(index): 
